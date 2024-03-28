@@ -16,7 +16,7 @@ int main()
         valor_2 = (rand() % 8) + 1;
         printf("Quanto é %dx%d?: ", valor_1, valor_2);
         scanf("%d", &input);
-        if (input == valor_1 * valor_2) {
+        if (input == valor_1 * valor_2) {    // Analise da resposta certa com o input!
             printf("Certo!\n");
             certas ++;
         }
