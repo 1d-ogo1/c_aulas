@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <assert.h>
 
 
 typedef struct{
@@ -14,6 +14,22 @@ double distancia(Ponto a, Ponto b){
 
 int mesmo_ponto(Ponto a, Ponto b){
     if(distancia(a,b) < 0.000001) return 1;
+    return 0;
+}
+
+double rec_area(Rect a){
+    double largura = a.sup_dir.x-a.inf_esq.x, altura = a.sup_dir.y-a.inf_esq.y;
+    assert(altura <= 0 || largura <= 0);
+    return largura*altura;
+}
+
+int ponto_dentro(Rect a, Ponto r){
+    if(r.x > a.inf_esq.x && r.y > a.inf_esq.y && r.x < a.sup_dir.x && r.y < a.sup_dir.y) return 1;
+    return 0;
+}
+
+int rect_dentro(Rect r1, Rect r2){
+    if(ponto_dentro(r1, r2.inf_esq) == 1 && ponto_dentro(r1, r2.sup_dir) == 1) return 1;
     return 0;
 }
 
